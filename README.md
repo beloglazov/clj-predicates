@@ -6,7 +6,7 @@ The library reuses several functions from Clj-MiscUtil distributed by Shantanu K
 
 ## Installation
 
-[clj-predicates "0.1.0"]
+[clj-predicates "0.1.1"]
 
 ## License
 
