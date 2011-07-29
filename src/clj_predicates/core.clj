@@ -1,0 +1,1 @@
+(ns clj-predicates.core)
