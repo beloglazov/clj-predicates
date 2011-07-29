@@ -61,41 +61,50 @@
 (defn not-boolean?
   "Returns true if x is not a boolean, false otherwise"
   [x]
+  {:post [(boolean? %)]}
   (not (boolean? x)))
 
 (defn zeronum?
   "Safe version of zero? - returns true if n is zero, false otherwise"
   [n]
+  {:post [(boolean? %)]}
   (and (number? n) (zero? n)))
 
 (defn not-zeronum?
   "Safe version of not-zero? - returns true if n is non-zero, false otherwise"
   [n]
+  {:post [(boolean? %)]}
   (and (number? n) (or (pos? n) (neg? n))))
 
 (defn posnum?
   "Safe version of pos? - returns true if n is a positive number, false otherwise"
   [n]
+  {:post [(boolean? %)]}
   (and (number? n) (pos? n)))
 
 (defn negnum?
   "Safe version of neg? - returns true if n is a negative number, false otherwise"
   [n]
+  {:post [(boolean? %)]}
   (and (number? n) (neg? n)))
 
 (defn not-negnum?
   "Safe version of not-neg? - returns true if n is a non-negative number, false otherwise"
   [n]
+  {:post [(boolean? %)]}
   (and (number? n) (or (zero? n) (pos? n))))
 
 (defn not-posnum?
   "Safe version of not-pos? - returns true if n is a non-positive number, false otherwise"
   [n]
+  {:post [(boolean? %)]}
   (and (number? n) (or (zero? n) (neg? n))))
 
 (defn contains-val?
   "Looks for a value in a collection"
   [coll needle]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (cond
     (not-coll? coll) false
     (map? coll)      (.containsValue ^Map coll needle)
@@ -104,36 +113,60 @@
 (defn not-contains-val?
   "Checks if coll does not contain the needle value"
   [coll needle]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (not (contains-val? coll needle)))
 
-(defn contains-vals? [coll & vs]
+(defn contains-vals?
   "Checks if coll contains all the listed values"
+  [coll & vs]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (every? (partial contains-val? coll) vs))
 
-(defn not-contains-vals? [coll & vs]
+(defn not-contains-vals?
   "Checks if coll does not contain all the listed values"
+  [coll & vs]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}  
   (not (some (partial contains-val? coll) vs)))
 
-(defn contains-keys? [coll & ks]
+(defn contains-keys? 
   "Checks if coll contains all the listed keys. Looks for values in sets"
+  [coll & ks]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (every? (partial contains? coll) ks))
 
-(defn not-contains-keys? [coll & ks]
+(defn not-contains-keys? 
   "Checks if coll does not contain all the listed keys. Looks for values in sets"
+  [coll & ks]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (not (some (partial contains? coll) ks)))
 
-(defn contains-meta? [x & ks]
+(defn contains-meta? 
   "Checks if x contains all the listed keys in its meta map"
+  [x & ks]
+  {:post [(boolean? %)]}
   (every? (partial contains? (meta x)) ks))
 
-(defn not-contains-meta? [x & ks]
+(defn not-contains-meta? 
   "Checks if x does not contain all the listed keys in its meta map"
+  [x & ks]
+  {:post [(boolean? %)]}
   (not (some (partial contains? (meta x)) ks)))
 
-(defn every-contains-keys? [coll & ks]
+(defn every-contains-keys? 
   "Checks if every item in coll contains all the listed keys"
+  [coll & ks]
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (every? #(apply contains-keys? % ks) coll))
 
-(defn every-contains-meta? [coll & ks]
+(defn every-contains-meta? 
   "Checks if every item in coll contains all the listed keys in its meta map"
+  [coll & ks]  
+  {:pre [(coll? coll)]
+   :post [(boolean? %)]}
   (every? #(apply contains-meta? % ks) coll))
