@@ -166,306 +166,306 @@
 (tabular
   (fact
     (contains-val? ?coll ?val) => ?expected)
-  ?coll                  ?val     ?expected
-  '(.a. .b. .c.)         .a.      true
-  '(.a. .b. .c.)         .b.      true
-  '(.a. .b. .c.)         .c.      true
-  '(.a. .b. .c.)         .d.      false  
-  [.a. .b. .c.]          .a.      true
-  [.a. .b. .c.]          .b.      true
-  [.a. .b. .c.]          .c.      true
-  [.a. .b. .c.]          .d.      false                              
-  #{.a. .b. .c.}         .a.      true
-  #{.a. .b. .c.}         .b.      true
-  #{.a. .b. .c.}         .c.      true
-  #{.a. .b. .c.}         .d.      false
-  {:a .a. :b .b. :c .c.} .a.      true
-  {:a .a. :b .b. :c .c.} .b.      true
-  {:a .a. :b .b. :c .c.} .c.      true
-  {:a .a. :b .b. :c .c.} .d.      false
-  {:a .a. :b .b. :c .c.} :a       false
-  {:a .a. :b .b. :c .c.} :b       false
-  {:a .a. :b .b. :c .c.} :c       false
-  {:a .a. :b .b. :c .c.} :d       false)
+  ?coll            ?val   ?expected
+  '(1 2 3)         1      true
+  '(1 2 3)         2      true
+  '(1 2 3)         3      true
+  '(1 2 3)         4      false  
+  [1 2 3]          1      true
+  [1 2 3]          2      true
+  [1 2 3]          3      true
+  [1 2 3]          4      false                              
+  #{1 2 3}         1      true
+  #{1 2 3}         2      true
+  #{1 2 3}         3      true
+  #{1 2 3}         4      false
+  {:a 1 :b 2 :c 3} 1      true
+  {:a 1 :b 2 :c 3} 2      true
+  {:a 1 :b 2 :c 3} 3      true
+  {:a 1 :b 2 :c 3} 4      false
+  {:a 1 :b 2 :c 3} :a     false
+  {:a 1 :b 2 :c 3} :b     false
+  {:a 1 :b 2 :c 3} :c     false
+  {:a 1 :b 2 :c 3} :d     false)
 
 (tabular
   (fact
     (not-contains-val? ?coll ?val) => ?expected)
-  ?coll                  ?val     ?expected
-  '(.a. .b. .c.)         .a.      false
-  '(.a. .b. .c.)         .b.      false
-  '(.a. .b. .c.)         .c.      false
-  '(.a. .b. .c.)         .d.      true  
-  [.a. .b. .c.]          .a.      false
-  [.a. .b. .c.]          .b.      false
-  [.a. .b. .c.]          .c.      false
-  [.a. .b. .c.]          .d.      true                              
-  #{.a. .b. .c.}         .a.      false
-  #{.a. .b. .c.}         .b.      false
-  #{.a. .b. .c.}         .c.      false
-  #{.a. .b. .c.}         .d.      true
-  {:a .a. :b .b. :c .c.} .a.      false
-  {:a .a. :b .b. :c .c.} .b.      false
-  {:a .a. :b .b. :c .c.} .c.      false
-  {:a .a. :b .b. :c .c.} .d.      true
-  {:a .a. :b .b. :c .c.} :a       true
-  {:a .a. :b .b. :c .c.} :b       true
-  {:a .a. :b .b. :c .c.} :c       true
-  {:a .a. :b .b. :c .c.} :d       true)
+  ?coll            ?val   ?expected
+  '(1 2 3)         1      false
+  '(1 2 3)         2      false
+  '(1 2 3)         3      false
+  '(1 2 3)         4      true  
+  [1 2 3]          1      false
+  [1 2 3]          2      false
+  [1 2 3]          3      false
+  [1 2 3]          4      true                              
+  #{1 2 3}         1      false
+  #{1 2 3}         2      false
+  #{1 2 3}         3      false
+  #{1 2 3}         4      true
+  {:a 1 :b 2 :c 3} 1      false
+  {:a 1 :b 2 :c 3} 2      false
+  {:a 1 :b 2 :c 3} 3      false
+  {:a 1 :b 2 :c 3} 4      true
+  {:a 1 :b 2 :c 3} :a     true
+  {:a 1 :b 2 :c 3} :b     true
+  {:a 1 :b 2 :c 3} :c     true
+  {:a 1 :b 2 :c 3} :d     true)
 
 (tabular
   (fact
     (contains-vals? ?coll ?a ?b) => ?expected)
-  ?coll                  ?a       ?b          ?expected
-  '(.a. .b. .c.)         .a.      .b.         true
-  '(.a. .b. .c.)         .b.      .c.         true
-  '(.a. .b. .c.)         .c.      .a.         true
-  '(.a. .b. .c.)         .d.      .a.         false
-  '(.a. .b. .c.)         .a.      .d.         false
-  '(.a. .b. .c.)         .b.      .d.         false
-  '(.a. .b. .c.)         .c.      .d.         false
-  '(.a. .b. .c.)         .d.      .e.         false    
-  [.a. .b. .c.]          .a.      .b.         true
-  [.a. .b. .c.]          .b.      .c.         true
-  [.a. .b. .c.]          .c.      .a.         true
-  [.a. .b. .c.]          .d.      .a.         false
-  [.a. .b. .c.]          .a.      .d.         false
-  [.a. .b. .c.]          .b.      .d.         false
-  [.a. .b. .c.]          .c.      .d.         false
-  [.a. .b. .c.]          .d.      .e.         false    
-  #{.a. .b. .c.}         .a.      .b.         true
-  #{.a. .b. .c.}         .b.      .c.         true
-  #{.a. .b. .c.}         .c.      .a.         true
-  #{.a. .b. .c.}         .d.      .a.         false
-  #{.a. .b. .c.}         .a.      .d.         false
-  #{.a. .b. .c.}         .b.      .d.         false
-  #{.a. .b. .c.}         .c.      .d.         false
-  #{.a. .b. .c.}         .d.      .e.         false  
-  {:a .a. :b .b. :c .c.} .a.      .b.         true
-  {:a .a. :b .b. :c .c.} .b.      .c.         true
-  {:a .a. :b .b. :c .c.} .c.      .a.         true
-  {:a .a. :b .b. :c .c.} .d.      .a.         false
-  {:a .a. :b .b. :c .c.} :a       :b          false
-  {:a .a. :b .b. :c .c.} :b       :c          false
-  {:a .a. :b .b. :c .c.} :c       :a          false
-  {:a .a. :b .b. :c .c.} :d       :a          false
-  {:a .a. :b .b. :c .c.} .a.      .d.         false
-  {:a .a. :b .b. :c .c.} .b.      .d.         false
-  {:a .a. :b .b. :c .c.} .c.      .d.         false
-  {:a .a. :b .b. :c .c.} .d.      .e.         false
-  {:a .a. :b .b. :c .c.} :a       :d          false
-  {:a .a. :b .b. :c .c.} :b       :d          false
-  {:a .a. :b .b. :c .c.} :c       :d          false
-  {:a .a. :b .b. :c .c.} :d       :e          false)
+  ?coll            ?a     ?b        ?expected
+  '(1 2 3)         1      2         true
+  '(1 2 3)         2      3         true
+  '(1 2 3)         3      1         true
+  '(1 2 3)         4      1         false
+  '(1 2 3)         1      4         false
+  '(1 2 3)         2      4         false
+  '(1 2 3)         3      4         false
+  '(1 2 3)         4      5         false    
+  [1 2 3]          1      2         true
+  [1 2 3]          2      3         true
+  [1 2 3]          3      1         true
+  [1 2 3]          4      1         false
+  [1 2 3]          1      4         false
+  [1 2 3]          2      4         false
+  [1 2 3]          3      4         false
+  [1 2 3]          4      5         false    
+  #{1 2 3}         1      2         true
+  #{1 2 3}         2      3         true
+  #{1 2 3}         3      1         true
+  #{1 2 3}         4      1         false
+  #{1 2 3}         1      4         false
+  #{1 2 3}         2      4         false
+  #{1 2 3}         3      4         false
+  #{1 2 3}         4      5         false  
+  {:a 1 :b 2 :c 3} 1      2         true
+  {:a 1 :b 2 :c 3} 2      3         true
+  {:a 1 :b 2 :c 3} 3      1         true
+  {:a 1 :b 2 :c 3} 4      1         false
+  {:a 1 :b 2 :c 3} :a     :b        false
+  {:a 1 :b 2 :c 3} :b     :c        false
+  {:a 1 :b 2 :c 3} :c     :a        false
+  {:a 1 :b 2 :c 3} :d     :a        false
+  {:a 1 :b 2 :c 3} 1      4         false
+  {:a 1 :b 2 :c 3} 2      4         false
+  {:a 1 :b 2 :c 3} 3      4         false
+  {:a 1 :b 2 :c 3} 4      5         false
+  {:a 1 :b 2 :c 3} :a     :d        false
+  {:a 1 :b 2 :c 3} :b     :d        false
+  {:a 1 :b 2 :c 3} :c     :d        false
+  {:a 1 :b 2 :c 3} :d     :e        false)
 
 (tabular
   (fact
     (not-contains-vals? ?coll ?a ?b) => ?expected)
-  ?coll                  ?a       ?b          ?expected
-  '(.a. .b. .c.)         .a.      .b.         false
-  '(.a. .b. .c.)         .b.      .c.         false
-  '(.a. .b. .c.)         .c.      .a.         false
-  '(.a. .b. .c.)         .d.      .a.         false
-  '(.a. .b. .c.)         .a.      .d.         false
-  '(.a. .b. .c.)         .b.      .d.         false
-  '(.a. .b. .c.)         .c.      .d.         false
-  '(.a. .b. .c.)         .d.      .e.         true    
-  [.a. .b. .c.]          .a.      .b.         false
-  [.a. .b. .c.]          .b.      .c.         false
-  [.a. .b. .c.]          .c.      .a.         false
-  [.a. .b. .c.]          .d.      .a.         false
-  [.a. .b. .c.]          .a.      .d.         false
-  [.a. .b. .c.]          .b.      .d.         false
-  [.a. .b. .c.]          .c.      .d.         false
-  [.a. .b. .c.]          .d.      .e.         true    
-  #{.a. .b. .c.}         .a.      .b.         false
-  #{.a. .b. .c.}         .b.      .c.         false
-  #{.a. .b. .c.}         .c.      .a.         false
-  #{.a. .b. .c.}         .d.      .a.         false
-  #{.a. .b. .c.}         .a.      .d.         false
-  #{.a. .b. .c.}         .b.      .d.         false
-  #{.a. .b. .c.}         .c.      .d.         false
-  #{.a. .b. .c.}         .d.      .e.         true  
-  {:a .a. :b .b. :c .c.} .a.      .b.         false
-  {:a .a. :b .b. :c .c.} .b.      .c.         false
-  {:a .a. :b .b. :c .c.} .c.      .a.         false
-  {:a .a. :b .b. :c .c.} .d.      .a.         false
-  {:a .a. :b .b. :c .c.} :a       :b          true
-  {:a .a. :b .b. :c .c.} :b       :c          true
-  {:a .a. :b .b. :c .c.} :c       :a          true
-  {:a .a. :b .b. :c .c.} :d       :a          true
-  {:a .a. :b .b. :c .c.} .a.      .d.         false
-  {:a .a. :b .b. :c .c.} .b.      .d.         false
-  {:a .a. :b .b. :c .c.} .c.      .d.         false
-  {:a .a. :b .b. :c .c.} .d.      .e.         true
-  {:a .a. :b .b. :c .c.} :a       :d          true
-  {:a .a. :b .b. :c .c.} :b       :d          true
-  {:a .a. :b .b. :c .c.} :c       :d          true
-  {:a .a. :b .b. :c .c.} :d       :e          true)
+  ?coll            ?a     ?b        ?expected
+  '(1 2 3)         1      2         false
+  '(1 2 3)         2      3         false
+  '(1 2 3)         3      1         false
+  '(1 2 3)         4      1         false
+  '(1 2 3)         1      4         false
+  '(1 2 3)         2      4         false
+  '(1 2 3)         3      4         false
+  '(1 2 3)         4      5         true    
+  [1 2 3]          1      2         false
+  [1 2 3]          2      3         false
+  [1 2 3]          3      1         false
+  [1 2 3]          4      1         false
+  [1 2 3]          1      4         false
+  [1 2 3]          2      4         false
+  [1 2 3]          3      4         false
+  [1 2 3]          4      5         true    
+  #{1 2 3}         1      2         false
+  #{1 2 3}         2      3         false
+  #{1 2 3}         3      1         false
+  #{1 2 3}         4      1         false
+  #{1 2 3}         1      4         false
+  #{1 2 3}         2      4         false
+  #{1 2 3}         3      4         false
+  #{1 2 3}         4      5         true  
+  {:a 1 :b 2 :c 3} 1      2         false
+  {:a 1 :b 2 :c 3} 2      3         false
+  {:a 1 :b 2 :c 3} 3      1         false
+  {:a 1 :b 2 :c 3} 4      1         false
+  {:a 1 :b 2 :c 3} :a     :b        true
+  {:a 1 :b 2 :c 3} :b     :c        true
+  {:a 1 :b 2 :c 3} :c     :a        true
+  {:a 1 :b 2 :c 3} :d     :a        true
+  {:a 1 :b 2 :c 3} 1      4         false
+  {:a 1 :b 2 :c 3} 2      4         false
+  {:a 1 :b 2 :c 3} 3      4         false
+  {:a 1 :b 2 :c 3} 4      5         true
+  {:a 1 :b 2 :c 3} :a     :d        true
+  {:a 1 :b 2 :c 3} :b     :d        true
+  {:a 1 :b 2 :c 3} :c     :d        true
+  {:a 1 :b 2 :c 3} :d     :e        true)
 
 (tabular
   (fact
     (contains-keys? ?coll ?a ?b) => ?expected)
-  ?coll                  ?a       ?b          ?expected
-  '(.a. .b. .c.)         .a.      .b.         false
-  '(.a. .b. .c.)         .b.      .c.         false
-  '(.a. .b. .c.)         .c.      .a.         false
-  '(.a. .b. .c.)         .d.      .a.         false
-  '(.a. .b. .c.)         .a.      .d.         false
-  '(.a. .b. .c.)         .b.      .d.         false
-  '(.a. .b. .c.)         .c.      .d.         false
-  '(.a. .b. .c.)         .d.      .e.         false    
-  [.a. .b. .c.]          .a.      .b.         false
-  [.a. .b. .c.]          .b.      .c.         false
-  [.a. .b. .c.]          .c.      .a.         false
-  [.a. .b. .c.]          .d.      .a.         false
-  [.a. .b. .c.]          .a.      .d.         false
-  [.a. .b. .c.]          .b.      .d.         false
-  [.a. .b. .c.]          .c.      .d.         false
-  [.a. .b. .c.]          .d.      .e.         false    
-  #{.a. .b. .c.}         .a.      .b.         true
-  #{.a. .b. .c.}         .b.      .c.         true
-  #{.a. .b. .c.}         .c.      .a.         true
-  #{.a. .b. .c.}         .d.      .a.         false
-  #{.a. .b. .c.}         .a.      .d.         false
-  #{.a. .b. .c.}         .b.      .d.         false
-  #{.a. .b. .c.}         .c.      .d.         false
-  #{.a. .b. .c.}         .d.      .e.         false  
-  {:a .a. :b .b. :c .c.} .a.      .b.         false
-  {:a .a. :b .b. :c .c.} .b.      .c.         false
-  {:a .a. :b .b. :c .c.} .c.      .a.         false
-  {:a .a. :b .b. :c .c.} .d.      .a.         false
-  {:a .a. :b .b. :c .c.} :a       :b          true
-  {:a .a. :b .b. :c .c.} :b       :c          true
-  {:a .a. :b .b. :c .c.} :c       :a          true
-  {:a .a. :b .b. :c .c.} :d       :a          false
-  {:a .a. :b .b. :c .c.} .a.      .d.         false
-  {:a .a. :b .b. :c .c.} .b.      .d.         false
-  {:a .a. :b .b. :c .c.} .c.      .d.         false
-  {:a .a. :b .b. :c .c.} .d.      .e.         false
-  {:a .a. :b .b. :c .c.} :a       :d          false
-  {:a .a. :b .b. :c .c.} :b       :d          false
-  {:a .a. :b .b. :c .c.} :c       :d          false
-  {:a .a. :b .b. :c .c.} :d       :e          false)
+  ?coll            ?a     ?b        ?expected
+  '(1 2 3)         1      2         false
+  '(1 2 3)         2      3         false
+  '(1 2 3)         3      1         false
+  '(1 2 3)         4      1         false
+  '(1 2 3)         1      4         false
+  '(1 2 3)         2      4         false
+  '(1 2 3)         3      4         false
+  '(1 2 3)         4      5         false    
+  [1 2 3]          1      2         true
+  [1 2 3]          2      3         false
+  [1 2 3]          3      1         false
+  [1 2 3]          4      1         false
+  [1 2 3]          1      4         false
+  [1 2 3]          2      4         false
+  [1 2 3]          3      4         false
+  [1 2 3]          4      5         false    
+  #{1 2 3}         1      2         true
+  #{1 2 3}         2      3         true
+  #{1 2 3}         3      1         true
+  #{1 2 3}         4      1         false
+  #{1 2 3}         1      4         false
+  #{1 2 3}         2      4         false
+  #{1 2 3}         3      4         false
+  #{1 2 3}         4      5         false  
+  {:a 1 :b 2 :c 3} 1      2         false
+  {:a 1 :b 2 :c 3} 2      3         false
+  {:a 1 :b 2 :c 3} 3      1         false
+  {:a 1 :b 2 :c 3} 4      1         false
+  {:a 1 :b 2 :c 3} :a     :b        true
+  {:a 1 :b 2 :c 3} :b     :c        true
+  {:a 1 :b 2 :c 3} :c     :a        true
+  {:a 1 :b 2 :c 3} :d     :a        false
+  {:a 1 :b 2 :c 3} 1      4         false
+  {:a 1 :b 2 :c 3} 2      4         false
+  {:a 1 :b 2 :c 3} 3      4         false
+  {:a 1 :b 2 :c 3} 4      5         false
+  {:a 1 :b 2 :c 3} :a     :d        false
+  {:a 1 :b 2 :c 3} :b     :d        false
+  {:a 1 :b 2 :c 3} :c     :d        false
+  {:a 1 :b 2 :c 3} :d     :e        false)
 
 (tabular
   (fact
     (not-contains-keys? ?coll ?a ?b) => ?expected)
-  ?coll                  ?a       ?b          ?expected
-  '(.a. .b. .c.)         .a.      .b.         true
-  '(.a. .b. .c.)         .b.      .c.         true
-  '(.a. .b. .c.)         .c.      .a.         true
-  '(.a. .b. .c.)         .d.      .a.         true
-  '(.a. .b. .c.)         .a.      .d.         true
-  '(.a. .b. .c.)         .b.      .d.         true
-  '(.a. .b. .c.)         .c.      .d.         true
-  '(.a. .b. .c.)         .d.      .e.         true    
-  [.a. .b. .c.]          .a.      .b.         true
-  [.a. .b. .c.]          .b.      .c.         true
-  [.a. .b. .c.]          .c.      .a.         true
-  [.a. .b. .c.]          .d.      .a.         true
-  [.a. .b. .c.]          .a.      .d.         true
-  [.a. .b. .c.]          .b.      .d.         true
-  [.a. .b. .c.]          .c.      .d.         true
-  [.a. .b. .c.]          .d.      .e.         true    
-  #{.a. .b. .c.}         .a.      .b.         false
-  #{.a. .b. .c.}         .b.      .c.         false
-  #{.a. .b. .c.}         .c.      .a.         false
-  #{.a. .b. .c.}         .d.      .a.         false
-  #{.a. .b. .c.}         .a.      .d.         false
-  #{.a. .b. .c.}         .b.      .d.         false
-  #{.a. .b. .c.}         .c.      .d.         false
-  #{.a. .b. .c.}         .d.      .e.         true  
-  {:a .a. :b .b. :c .c.} .a.      .b.         true
-  {:a .a. :b .b. :c .c.} .b.      .c.         true
-  {:a .a. :b .b. :c .c.} .c.      .a.         true
-  {:a .a. :b .b. :c .c.} .d.      .a.         true
-  {:a .a. :b .b. :c .c.} :a       :b          false
-  {:a .a. :b .b. :c .c.} :b       :c          false
-  {:a .a. :b .b. :c .c.} :c       :a          false
-  {:a .a. :b .b. :c .c.} :d       :a          false
-  {:a .a. :b .b. :c .c.} .a.      .d.         true
-  {:a .a. :b .b. :c .c.} .b.      .d.         true
-  {:a .a. :b .b. :c .c.} .c.      .d.         true
-  {:a .a. :b .b. :c .c.} .d.      .e.         true
-  {:a .a. :b .b. :c .c.} :a       :d          false
-  {:a .a. :b .b. :c .c.} :b       :d          false
-  {:a .a. :b .b. :c .c.} :c       :d          false
-  {:a .a. :b .b. :c .c.} :d       :e          true)
+  ?coll            ?a     ?b        ?expected
+  '(1 2 3)         1      2         true
+  '(1 2 3)         2      3         true
+  '(1 2 3)         3      1         true
+  '(1 2 3)         4      1         true
+  '(1 2 3)         1      4         true
+  '(1 2 3)         2      4         true
+  '(1 2 3)         3      4         true
+  '(1 2 3)         4      5         true    
+  [1 2 3]          1      2         false
+  [1 2 3]          2      3         false
+  [1 2 3]          3      1         false
+  [1 2 3]          4      1         false
+  [1 2 3]          1      4         false
+  [1 2 3]          2      4         false
+  [1 2 3]          3      4         true
+  [1 2 3]          4      5         true   
+  #{1 2 3}         1      2         false
+  #{1 2 3}         2      3         false
+  #{1 2 3}         3      1         false
+  #{1 2 3}         4      1         false
+  #{1 2 3}         1      4         false
+  #{1 2 3}         2      4         false
+  #{1 2 3}         3      4         false
+  #{1 2 3}         4      5         true  
+  {:a 1 :b 2 :c 3} 1      2         true
+  {:a 1 :b 2 :c 3} 2      3         true
+  {:a 1 :b 2 :c 3} 3      1         true
+  {:a 1 :b 2 :c 3} 4      1         true
+  {:a 1 :b 2 :c 3} :a     :b        false
+  {:a 1 :b 2 :c 3} :b     :c        false
+  {:a 1 :b 2 :c 3} :c     :a        false
+  {:a 1 :b 2 :c 3} :d     :a        false
+  {:a 1 :b 2 :c 3} 1      4         true
+  {:a 1 :b 2 :c 3} 2      4         true
+  {:a 1 :b 2 :c 3} 3      4         true
+  {:a 1 :b 2 :c 3} 4      5         true
+  {:a 1 :b 2 :c 3} :a     :d        false
+  {:a 1 :b 2 :c 3} :b     :d        false
+  {:a 1 :b 2 :c 3} :c     :d        false
+  {:a 1 :b 2 :c 3} :d     :e        true)
 
 (tabular
   (fact
     (contains-meta? ?x ?a ?b) => ?expected)
-  ?x                         ?a       ?b           ?expected
+  ?x                   ?a     ?b         ?expected
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .a.      .b.          false
+    {:a 1 :b 2 :c 3})  1      2          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .b.      .c.          false
+    {:a 1 :b 2 :c 3})  2      3          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .c.      .a.          false
+    {:a 1 :b 2 :c 3})  3      1          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .d.      .a.          false
+    {:a 1 :b 2 :c 3})  4      1          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .a.      .d.          false
+    {:a 1 :b 2 :c 3})  1      4          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .b.      .d.          false
+    {:a 1 :b 2 :c 3})  2      4          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .c.      .d.          false
+    {:a 1 :b 2 :c 3})  3      4          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .d.      .e.          false
+    {:a 1 :b 2 :c 3})  4      5          false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :a       :b           true
+    {:a 1 :b 2 :c 3})  :a     :b         true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :b       :c           true
+    {:a 1 :b 2 :c 3})  :b     :c         true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :c       :d           false
+    {:a 1 :b 2 :c 3})  :c     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :d       :a           false
+    {:a 1 :b 2 :c 3})  :d     :a         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :a       :d           false
+    {:a 1 :b 2 :c 3})  :a     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :b       :d           false
+    {:a 1 :b 2 :c 3})  :b     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :c       :d           false
+    {:a 1 :b 2 :c 3})  :c     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :d       :e           false)
+    {:a 1 :b 2 :c 3})  :d     :e         false)
 
 (tabular
   (fact
     (not-contains-meta? ?x ?a ?b) => ?expected)
-  ?x                         ?a       ?b           ?expected
+  ?x                   ?a    ?b          ?expected
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .a.      .b.          true
+    {:a 1 :b 2 :c 3})  1      2          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .b.      .c.          true
+    {:a 1 :b 2 :c 3})  2      3          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .c.      .a.          true
+    {:a 1 :b 2 :c 3})  3      1          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .d.      .a.          true
+    {:a 1 :b 2 :c 3})  4      1          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .a.      .d.          true
+    {:a 1 :b 2 :c 3})  1      4          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .b.      .d.          true
+    {:a 1 :b 2 :c 3})  2      4          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .c.      .d.          true
+    {:a 1 :b 2 :c 3})  3      4          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  .d.      .e.          true
+    {:a 1 :b 2 :c 3})  4      5          true
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :a       :b           false
+    {:a 1 :b 2 :c 3})  :a     :b         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :b       :c           false
+    {:a 1 :b 2 :c 3})  :b     :c         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :c       :d           false
+    {:a 1 :b 2 :c 3})  :c     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :d       :a           false
+    {:a 1 :b 2 :c 3})  :d     :a         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :a       :d           false
+    {:a 1 :b 2 :c 3})  :a     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :b       :d           false
+    {:a 1 :b 2 :c 3})  :b     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :c       :d           false
+    {:a 1 :b 2 :c 3})  :c     :d         false
   (with-meta []
-    {:a .a. :b .b. :c .c.})  :d       :e           true)
+    {:a 1 :b 2 :c 3})  :d     :e         true)
 
 (tabular
   (fact
