@@ -6,10 +6,10 @@ The library reuses several functions from Clj-MiscUtil distributed by Shantanu K
 
 ## Installation
 
-[clj-predicates "0.1.1"]
+[clj-predicates "0.2.0"]
 
 ## License
 
-Copyright (C) 2011 Anton Beloglazov
+Copyright (C) 2011-2012 Anton Beloglazov
 
 Distributed under the Eclipse Public License, the same as Clojure.
